@@ -1,0 +1,36 @@
+body{
+    
+background:url('./images/wthr.jpg') no-repeat center center fixed;
+background-repeat:no-repeat;
+background-size:cover;
+    }
+    
+
+.form-control{
+    width:20% !important;
+}
+.main{
+    display: flex;
+    justify-content:center;
+    
+}
+
+.city-button{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+}
+
+.btn-dark{
+    padding:10px;
+}
+
+.child-left{
+    margin-left: 300px!important;
+    font-weight: 700;
+}
+.child-right{
+    margin-right: 400px;
+}
+
