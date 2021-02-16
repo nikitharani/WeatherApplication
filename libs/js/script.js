@@ -12,15 +12,17 @@
 				console.log(result);
 
 				if (result.status.name == "ok") {
+					console.log(result.data);
 
-					// $('#txtContinent').html(result['name']);
+					$('#cname').html(result['data']['name']);
+					$('#des').html(result['data']['weather'][0]['description']);
+					$('#currentTemp').html(result['data']['main']['temp']);	
+					$('#realTemp').html(result.data.main.feels_like);
+					$('#humidity').html(result['data']['main']['humidity']);
 					$('#txtmax').html(result['data']['main']['temp_max']);					
 					$('#txtmin').html(result['data']['main']['temp_min']);
 					$('#wind').html(result['data']['wind']['speed']);
-					$('#humidity').html(result['data']['main']['humidity']);
-					$('#des').html(result['data']['weather'][0]['description']);
-					$('#cname').html(result['data']['name']);
-
+					
 				}
 			
 			},

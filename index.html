@@ -2,97 +2,111 @@
 
 <html lang="en">
 
-	<head>
+<head>
 
-		<meta charset="utf-8">
+	<meta charset="utf-8">
 
-		<title>WeatherApp</title>
-		<meta name="description" content="AJAX/PHP/CURL/JSON example">
-		
-		<link href="libs/css/style.css" rel="stylesheet">
-	
-			
-	</head>
+	<title>WeatherApp</title>
+	<meta name="description" content="AJAX/PHP/CURL/JSON example">
 
-	<body>
-		<h1><span id=cname></span> Weather Status</h1>
-		<div class="city-button">
-			
-			<label for="selCity">Enter City Name</label>
-			<input type="text" id="selCity" class="form-control" name="selCity" onkeyup="showHint(this.value)">
-			<div class="input-group-append">
-				<button id="btnRun" type="button" >Run</button>
+	<!-- Bootstrap Css files-->
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap/css/mdb.css">
+	<link href="libs/css/style.css" rel="stylesheet">
+
+	<script>
+		function showHint(str) {
+			if (str.length == 0) {
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("txtHint").innerHTML = this.responseText;
+					}
+				};
+				xmlhttp.open("GET", "libs/php/getCityNames.php?q=" + str, true);
+				xmlhttp.send();
+			}
+		}
+	</script>
+
+</head>
+
+<body>
+	<div class="container mt-5 ">
+		<div class="row">
+			<div class="col-sm-12 ">
+				<div class='main'>
+					<h1 style="color:white;font-weight:700;">Weather Status of Cities</h1>
+				</div>
+				<div class="city-button">
+
+					<input type="text" id="selCity" class="form-control" name="selCity" placeholder="Enter City Name"
+						onkeyup="showHint(this.value)">
+					<div class="input-group-append">
+						<button type="button" id="btnRun" class="btn btn-dark">Go</button>
+
+
+					</div>
+
+				</div>
+				<p>Suggestions: <span id="txtHint">Birmingham, London, Manchester</span></p>
+				<br>
+
+
+			</div>
+			<div class="row  modal-body">
+				<div class="col-sm-12">
+
+					<div class="container mt-4">
+
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Weather in the City:</div>
+							<div class="child-right" id="cname"></div>
+						</div>
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Current weather conditions:</div>
+							<div class="child-right" id="des"></div>
+						</div>
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Current temperature (°C):</div>
+							<div class="child-right" id="currentTemp"></div>
+						</div>
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Real Feel temperature (°C):</div>
+							<div class="child-right" id="realTemp"></div>
+						</div>
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Humidity:</div>
+							<div class="child-right" id="humidity"></div>
+						</div>
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Min Temperature (°C):</div>
+							<div class="child-right" id="txtmin"></div>
+						</div>
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Max Temperature (°C):</div>
+							<div class="child-right" id="txtmax"></div>
+						</div>
+						<div class="row justify-content-between mt-3">
+							<div class="mr-4 child-left">Wind Speed (mph) :</div>
+							<div class="child-right" id="wind"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-			<p>Suggestions: <span id="txtHint"></span></p>
-		<br>
 
-		<div id="divResults">
-			
-			<table>
-				
-				<tr>
-					<td align="center" id='err'>						
-					</td>				
 
-				</tr>
 
-				<tr>
-					<td align="right">
-						Max-Temp: 
-					</td>
-					<td id="txtmax">
-						
-					</td>
 
-				</tr>
-
-				<tr>
-					<td align="right">
-						Min-Temp: 
-					</td>
-					<td id="txtmin">
-						
-					</td>
-
-				</tr>
-				<tr>
-					<td align="right">
-						Description: 
-					</td>
-					<td id="des">
-						
-					</td>
-
-				</tr>
-				<tr>
-					<td align="right">
-						Wind: 
-					</td>
-					<td id="wind">
-						
-					</td>
-
-				</tr>
-				<tr>
-					<td align="right">
-						Humidity: 
-					</td>
-					<td id="humidity">
-						
-					</td>
-
-				</tr>
-
-			</table>
-
-		</div>
-		
 
 		<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
-		
-		
-		
-	</body>
+		<script type="application/javascript" src="libs/js/script.js"></script>
+
+
+</body>
 
 </html>

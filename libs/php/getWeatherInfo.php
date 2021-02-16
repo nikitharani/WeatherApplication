@@ -7,7 +7,7 @@
 	$api_key = getenv('weather_api_key', $local_only = TRUE );
 
 	
-	$url = 'http://api.openweathermap.org/data/2.5/weather?q=' . $city . '&appid='.$api_key;
+	$url = 'http://api.openweathermap.org/data/2.5/weather?q=' . $city . '&appid='.$api_key . '&units=metric';
 
 	
 	$ch = curl_init($url);
@@ -20,15 +20,12 @@
 	curl_close($ch);
 
 	$decode = json_decode($result,true);
-	// console.log($decode);	
 
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "mission saved";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 
-	 
-	//  $output['data'] =ucwords( $decode['weather'][0]['description']);
 	 $output['data'] = $decode;
 	
 	header('Content-Type: application/json; charset=UTF-8');
