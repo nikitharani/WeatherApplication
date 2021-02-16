@@ -1,0 +1,98 @@
+<!Doctype html>
+
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<title>WeatherApp</title>
+		<meta name="description" content="AJAX/PHP/CURL/JSON example">
+		
+		<link href="libs/css/style.css" rel="stylesheet">
+	
+			
+	</head>
+
+	<body>
+		<h1><span id=cname></span> Weather Status</h1>
+		<div class="city-button">
+			
+			<label for="selCity">Enter City Name</label>
+			<input type="text" id="selCity" class="form-control" name="selCity" onkeyup="showHint(this.value)">
+			<div class="input-group-append">
+				<button id="btnRun" type="button" >Run</button>
+			</div>
+		</div>
+			<p>Suggestions: <span id="txtHint"></span></p>
+		<br>
+
+		<div id="divResults">
+			
+			<table>
+				
+				<tr>
+					<td align="center" id='err'>						
+					</td>				
+
+				</tr>
+
+				<tr>
+					<td align="right">
+						Max-Temp: 
+					</td>
+					<td id="txtmax">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td align="right">
+						Min-Temp: 
+					</td>
+					<td id="txtmin">
+						
+					</td>
+
+				</tr>
+				<tr>
+					<td align="right">
+						Description: 
+					</td>
+					<td id="des">
+						
+					</td>
+
+				</tr>
+				<tr>
+					<td align="right">
+						Wind: 
+					</td>
+					<td id="wind">
+						
+					</td>
+
+				</tr>
+				<tr>
+					<td align="right">
+						Humidity: 
+					</td>
+					<td id="humidity">
+						
+					</td>
+
+				</tr>
+
+			</table>
+
+		</div>
+		
+
+		<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+		
+		
+		
+	</body>
+
+</html>
